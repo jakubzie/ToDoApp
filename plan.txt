@@ -1,0 +1,8 @@
+﻿1. wczytanie listy z pliku  OK
+2. możliwość dodawania pozycji OK
+2.1 usuwania pozycji
+3. możliwość zresetowania listy OK
+4. zapisanie listy do pliku OK
+5. jakieś gui, przyciski
+
+*dynamiczna alokacja pamięci
