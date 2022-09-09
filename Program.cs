@@ -13,9 +13,11 @@ namespace ProgramNumeroUno
         static void currList(List<dynamic> lista)
         {
             Console.WriteLine("Obecna lista: ");
+            int i = 1;
             foreach(string elem in lista)
             {
-                Console.WriteLine(elem);
+                Console.WriteLine(i+". "+elem);
+                i++;
             }
             Console.WriteLine(); 
         }
@@ -31,21 +33,39 @@ namespace ProgramNumeroUno
             {
                 lista.Add(line);
             }
-            currList(lista);
 
-            bool addElement;
+            bool addElement,delElement;
             do
             {
-                addElement = false;
-                Console.WriteLine("Czy chcesz dodać element do listy? Tak/Nie");
-                if (Console.ReadLine() == "Tak")
+                addElement = delElement = false;
+                currList(lista);
+                Console.WriteLine("Czy chcesz dodać element do listy? Tak/Nie/X aby wyjść");
+                string add = Console.ReadLine();
+                if (add == "Tak")
                 {
                     addElement = true;
-                    Console.WriteLine("Podaj co chcesz dodać:");
+                    Console.Write("Podaj co chcesz dodać: ");
                     lista.Add(Console.ReadLine());
                 }
-            } while (addElement);
-            currList(lista);
+                else if (add == "X")
+                {
+                    goto LoopEnd;
+                }
+                Console.WriteLine("Czy chcesz usunąć element z listy? Tak/Nie/X aby wyjść");
+                string del = Console.ReadLine();
+                if (del == "Tak")
+                {
+                    delElement = true;
+                    Console.Write("Którą pozycję chcesz usunąć?: ");
+                    lista.RemoveAt(Convert.ToInt32(Console.ReadLine())-1);
+                }
+                else if(del == "X")
+                {
+                    goto LoopEnd;
+                }
+            } while (addElement || delElement);
+            LoopEnd:
+                currList(lista);
 
             Console.WriteLine("Czy chcesz zresetować listę? Tak/Nie");
             if (Console.ReadLine()=="Tak")
