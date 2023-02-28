@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgramNumeroUno
+namespace ToDoApp
 {
 
     class Program
@@ -24,7 +24,6 @@ namespace ProgramNumeroUno
         }
         static void Main(string[] args)
         {
-            //string path = "C:\\Users\\Kuba\\source\\repos\\ToDoApp\\lista.txt";
             string oldpath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location).ToString();
             string path = $"{Path.GetFullPath(Path.Combine(oldpath, @"..\..\..\"))}\\lista.txt";
 
@@ -93,11 +92,6 @@ namespace ProgramNumeroUno
                     textFin = string.Concat(textFin, "\n", line);
                 }
             }
-            //Console.WriteLine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location).ToString());
-            //string pth = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location).ToString();
-            //string newpth = Path.GetFullPath(Path.Combine(pth, @"..\..\..\"));
-            //Console.WriteLine(newpth);
-            //Console.WriteLine(System.AppDomain.CurrentDomain.BaseDirectory.ToString());
 
             File.WriteAllText(path,textFin);
         }
