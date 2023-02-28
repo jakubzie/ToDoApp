@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,7 +24,9 @@ namespace ProgramNumeroUno
         }
         static void Main(string[] args)
         {
-            string path = "C:\\Users\\Kuba\\source\\repos\\ToDoApp\\lista.txt";
+            //string path = "C:\\Users\\Kuba\\source\\repos\\ToDoApp\\lista.txt";
+            string oldpath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location).ToString();
+            string path = $"{Path.GetFullPath(Path.Combine(oldpath, @"..\..\..\"))}\\lista.txt";
 
             string text = File.ReadAllText(path);
             List<dynamic> lista = new List<dynamic>();
@@ -90,8 +93,12 @@ namespace ProgramNumeroUno
                     textFin = string.Concat(textFin, "\n", line);
                 }
             }
+            //Console.WriteLine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location).ToString());
+            //string pth = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location).ToString();
+            //string newpth = Path.GetFullPath(Path.Combine(pth, @"..\..\..\"));
+            //Console.WriteLine(newpth);
+            //Console.WriteLine(System.AppDomain.CurrentDomain.BaseDirectory.ToString());
 
-            Console.WriteLine(textFin);
             File.WriteAllText(path,textFin);
         }
     }
