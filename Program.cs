@@ -13,7 +13,7 @@ namespace ToDoApp
     {
         static void currList(List<dynamic> lista)
         {
-            Console.WriteLine("Obecna lista: ");
+            Console.WriteLine("Current list: ");
             int i = 1;
             foreach(string elem in lista)
             {
@@ -41,27 +41,27 @@ namespace ToDoApp
             {
                 addElement = delElement = false;
                 currList(lista);
-                Console.WriteLine("Czy chcesz dodać element do listy? Tak/Nie/X aby wyjść");
+                Console.WriteLine("Would you like to add a position to the list? Yes/No/X to quit");
                 string add = Console.ReadLine();
-                if (add == "Tak")
+                if (add.ToLower() == "yes")
                 {
                     addElement = true;
-                    Console.Write("Podaj co chcesz dodać: ");
+                    Console.Write("What do you want to add?: ");
                     lista.Add(Console.ReadLine());
                 }
-                else if (add == "X")
+                else if (add.ToLower() == "x")
                 {
                     goto LoopEnd;
                 }
-                Console.WriteLine("Czy chcesz usunąć element z listy? Tak/Nie/X aby wyjść");
+                Console.WriteLine("Would you like to remove something from the list? Yes/No/X to quit");
                 string del = Console.ReadLine();
-                if (del == "Tak")
+                if (del.ToLower() == "yes")
                 {
                     delElement = true;
-                    Console.Write("Którą pozycję chcesz usunąć?: ");
+                    Console.Write("Which position would you like to remove?: ");
                     lista.RemoveAt(Convert.ToInt32(Console.ReadLine())-1);
                 }
-                else if(del == "X")
+                else if(del.ToLower() == "x")
                 {
                     goto LoopEnd;
                 }
@@ -69,15 +69,15 @@ namespace ToDoApp
             LoopEnd:
                 currList(lista);
 
-            Console.WriteLine("Czy chcesz zresetować listę? Tak/Nie");
-            if (Console.ReadLine()=="Tak")
+            Console.WriteLine("Would you like to reset the list? Yes/No");
+            if (Console.ReadLine().ToLower()=="yes")
             {
                 lista.Clear();
-                Console.WriteLine("Lista została zresetowana!");
+                Console.WriteLine("The list has been reset!");
             }
             else
             {
-                Console.WriteLine("Lista nie została zresetowana");
+                Console.WriteLine("The list has not been reset");
             }
 
             string textFin ="";
